@@ -1,0 +1,135 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simple SPA v2</title>
+  <style>
+    body {
+      font-family: "Poppins", sans-serif;
+      margin: 0;
+      background-color: #f0f4f8;
+      color: #333;
+    }
+
+    header {
+      background-color: #0078d7;
+      padding: 15px 0;
+      text-align: center;
+      color: white;
+      font-size: 24px;
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+
+    nav {
+      background-color: #fff;
+      display: flex;
+      justify-content: center;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #0078d7;
+      padding: 14px 25px;
+      display: inline-block;
+      font-size: 17px;
+      transition: 0.3s;
+    }
+
+    nav a:hover {
+      background-color: #0078d7;
+      color: white;
+    }
+
+    nav a.active {
+      background-color: #0078d7;
+      color: white;
+    }
+
+    #content {
+      text-align: center;
+      padding: 40px;
+      animation: fadeIn 0.3s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    footer {
+      background-color: #0078d7;
+      color: white;
+      text-align: center;
+      padding: 10px 0;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+  <header>My Simple SPA</header>
+
+  <nav>
+    <a href="#" id="homeLink" onclick="navigate('home')">Home</a>
+    <a href="#" id="aboutLink" onclick="navigate('about')">About</a>
+    <a href="#" id="servicesLink" onclick="navigate('services')">Services</a>
+    <a href="#" id="contactLink" onclick="navigate('contact')">Contact</a>
+  </nav>
+
+  <div id="content"></div>
+
+  <footer>© 2025 My Simple SPA | All Rights Reserved</footer>
+
+  <script>
+    function navigate(page) {
+      const content = document.getElementById("content");
+      const links = document.querySelectorAll("nav a");
+
+      // Remove active class from all links
+      links.forEach(link => link.classList.remove("active"));
+
+      // Add active class to clicked link
+      document.getElementById(page + "Link").classList.add("active");
+
+      // Change content based on page
+      if (page === "home") {
+        content.innerHTML = `
+          <h1>🏠 Welcome Home</h1>
+          <p>This is the home section of your single page app.</p>
+        `;
+      } 
+      else if (page === "about") {
+        content.innerHTML = `
+          <h1>ℹ️ About Us</h1>
+          <p>We are a small team learning how to build simple SPAs using HTML, CSS, and JS.</p>
+        `;
+      } 
+      else if (page === "services") {
+        content.innerHTML = `
+          <h1>🛠 Our Services</h1>
+          <ul style="list-style:none; padding:0;">
+            <li>✔️ Web Design</li>
+            <li>✔️ Frontend Development</li>
+            <li>✔️ UI/UX Design</li>
+          </ul>
+        `;
+      } 
+      else if (page === "contact") {
+        content.innerHTML = `
+          <h1>📞 Contact Us</h1>
+          <p>Email: support@example.com</p>
+          <p>Phone: +91 98765 43210</p>
+        `;
+      }
+    }
+
+    // Load home page by default
+    navigate("home");
+  </script>
+</body>
+</html>
